@@ -25,7 +25,7 @@ SECRET_KEY = 'srg76j@9jeyctr_bz(w309=fr-qrc*vnv=hle8%7=+k&@p6ci='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nuri.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','nuri.pythonanywhere.com']
 
 
 # Application definition
@@ -46,6 +46,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -120,3 +121,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mysite', 'media')
