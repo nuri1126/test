@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from mysite import settings
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
@@ -22,6 +23,11 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
+# def get_image_url(self):
+#     return '%s%s%s' % (settings.MEDIA_ROOT, "/pictures/", self)
+
+
 #file upload 부분
 class Picture(models.Model):
     """This is a small demo using just two fields. The slug field is really not
@@ -30,6 +36,7 @@ class Picture(models.Model):
     problems installing pillow, use a more generic FileField instead.
 
     """
+    # file = models.ImageField(upload_to="pictures")
     file = models.ImageField(upload_to="pictures")
     slug = models.SlugField(max_length=50, blank=True)
 

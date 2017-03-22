@@ -16,6 +16,8 @@ from blog.views import (
         )
 
 urlpatterns = [
+    url(r'^slim/$', views.classify, name='classify'), # Point
+    # url(r'^$', views.view_photos, name='view_photos'),
     url(r'^$', views.post_list, name='post_list'),
     url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
     url(r'^post/new/$', views.post_new, name='post_new'),

@@ -1,5 +1,6 @@
-  {% load staticfiles %}
+
 {% load staticfiles %}
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -67,10 +68,13 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#download">Download</a>
+                        <a class="page-scroll" href="#download">Upload</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#features">Features</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#cta">Photos</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -88,11 +92,11 @@
                 <div class="col-sm-7">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <h1>숙명고 소개 개요 인트로 등등 넣어도 될 것 같다.</h1>
-                            <form action="{% url 'hello' %}" method="post">
-                              {% csrf_token %}
-                              <input name="hiya">
-                              <input type="submit">
+                            <h1><b>Girlclash</b></h1>
+                            <p>Automatic photo classifier</p>
+                             {% csrf_token %}
+                              <!--<input name="hiya">-->
+                              <!--<input type="submit">-->
                             </form>
                             <a href="#download" class="btn btn-outline btn-xl page-scroll">Start Now for Free!</a>
                         </div>
@@ -104,7 +108,9 @@
                             <div class="device">
                                 <div class="screen">
                                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="{% static 'img/demo-screen-1.jpg' %}" class="img-responsive" alt="">
+                                    <p>먼저 Girlclash라는 명칭에 담긴 의미는 여대생을 타겟으로 했다는 점에서 ‘girl’, 사진을 분류해주므로 classify의 ‘class’, 그리고 ‘-sh’를 합친 것입니다.
+                            숙명고팀이 Girlclash를 제작하게 된 이유는 다음과 같습니다. 여대생의 특성상 맛있는 음식을 먹기 전이나 화장이 잘 되었을 때 등 사진을 자주 찍지만 막상 앨범에 들어 가보면 분류되어 있지 않아서 찾기 힘들 뿐만 아니라 보기도 좋지 않습니다. 또 직접 분류하기에는 시간이 오래 걸립니다. 그러나 컴퓨터가 사진을 주제에 따라 자동으로 분류해준다면 이러한 문제를 해결할 수 있을 것이라 생각하였습니다. 이에 최근 이슈가 된 기계학습을 적용하여 적절한 서비스를 개발하게 되었습니다.
+                            Girlclash의 주 기능은 웹상에 업로드 한 사진을 버튼 하나를 누르는 것으로 여대생에게 적합한 주제인 셀카, 애완동물, 자연, 음식, 옷으로 자동 분류해주는 것입니다. 메인 화면에서 업로드 버튼을 누르면 사진 업로드 페이지로 넘어가 사진 업로드를 할 수 있게 됩니다. 업로드 기능은 많은 사진을 처리할 것을 고려해 다중파일 업로드 기능으로 구현하였고 업로드 후에 다시 메인페이지로 넘어가 분류 버튼을 누르면 각각의 주제로 사진이 자동으로 분류됩니다.</p>
                                 </div>
                                 <div class="button">
                                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -121,95 +127,93 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">사진 업로드!</h2>
-                    <p>Our app is available on any mobile device! Download now to get started!</p>
+                    <h2 class="section-heading">Upload your photos!</h2>
+                    <p>Press the button to go to the upload page.</p>
                     <div class="badges">
-                        <a class="badge-link" href="#"><img src="{% static 'img/google-play-badge.svg' %}" alt=""></a>
-                        <a class="badge-link" href="#"><img src="{% static 'img/app-store-badge.svg' %}" alt=""></a>
+                        <a href="{% url 'upload-angular' %}"class="btn btn-outline btn-xl page-scroll">Upload photos</a>
+                        <!--<a class="badge-link" href="#"><img src="{% static 'img/google-play-badge.svg' %}" alt=""></a>-->
+                        <!--<a class="badge-link" href="#"><img src="{% static 'img/app-store-badge.svg' %}" alt=""></a>-->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="features" class="features">
-        <div class="container">
+     <section id="cta" class="cta">
+        <div class="cta-content">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
-                        <h2>Unlimited Features, Unlimited Fun</h2>
-                        <p class="text-muted">Check out what you can do with this app theme!</p>
+                        <h2>Photos</h2>
                         <hr>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="device-container">
-                        <div class="device-mockup iphone6_plus portrait white">
-                            <div class="device">
-                                <div class="screen">
-                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="{% static 'img/demo-screen-1.jpg' %}" class="img-responsive" alt=""> </div>
-                                <div class="button">
-                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <body>
+                <div style="padding:10px;">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="" class="btn btn-outline btn-xl page-scroll">All</a></li>
+                        <li><a href="" class="btn btn-outline btn-xl page-scroll">Faces</a></li>
+                        <li><a href="" class="btn btn-outline btn-xl page-scroll">Food</a></li>
+                        <li><a href="" class="btn btn-outline btn-xl page-scroll">Nature</a></li>
+                        <li><a href="" class="btn btn-outline btn-xl page-scroll">Pets</a></li>
+                        <li><a href="" class="btn btn-outline btn-xl page-scroll">Fashion</a></li>
+                        <li><a href="" class="btn btn-outline btn-xl page-scroll">Etc</a></li>
+                        <!--<li><a href="/upload/basic/plus">Basic Plus</a></li>-->
+                        <!--<li><a href="/upload/new">Basic Plus UI</a></li>-->
+                        <!--<li class="active"><a href="/upload/angular">AngularJS</a></li>-->
+                        <!--<li><a href="/upload/jquery-ui">jQuery UI</a></li>-->
+                    </ul>
                 </div>
-                <div class="col-md-8">
-                    <div class="container-fluid">
+                <div class="jumbotron">
+                <div class="row">
+                      <div class="container">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-screen-smartphone text-primary"></i>
-                                    <h3>Device Mockups</h3>
-                                    <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
+                              {% for picture in pictures %}
+                                <div class="col-md-3 col-sm-3 portfolio-item">
+                                    <a href="" data-toggle="modal">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content">
+                                                <!--<i class="fa fa-plus fa-3x"></i>-->
+                                            </div>
+                                        </div>
+                                        <img src="{{picture.file.url}}" class="img-responsive" alt="" class="img-thumbnail" style="width:360px; height:360px;">
+                                    </a>
+                                    <!--<div class="portfolio-caption">-->
+                                        <!--<form action="#">-->
+                                        <!--&lt;!&ndash;<input type="checkbox" name="test" class="filled-in" id="{{ movie.id }}1" value="{{ movie.title }}" />&ndash;&gt;-->
+                                        <!--</form>-->
+                                    <!--</div>-->
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-camera text-primary"></i>
-                                    <h3>Flexible Use</h3>
-                                    <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
-                                </div>
-                            </div>
+                              {% endfor %}
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-present text-primary"></i>
-                                    <h3>Free to Use</h3>
-                                    <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-lock-open text-primary"></i>
-                                    <h3>Open Source</h3>
-                                    <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <img src="media/Jellyfish.jpg" class="img-responsive" alt="">
+
                 </div>
-            </div>
+
+                </div>
+                </div>
+            </body>
+            <!--<div class="container">-->
+                <!--<body>-->
+                    <!--<div class="content container">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-8">-->
+                                <!--{% block content %}-->
+                                <!--{% endblock %}-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</body>-->
+            <!--</div>-->
+        </div>
+        </div>
     </section>
 
-    <section class="cta">
-        <div class="cta-content">
-            <div class="container">
-                <h2>Stop waiting.<br>Start building.</h2>
-                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
-            </div>
-        </div>
-        <div class="overlay"></div>
-    </section>
     <section id="contact" class="contact bg-primary">
         <div class="container">
-            <h2>We <i class="fa fa-heart"></i> new friends!</h2>
-            <ul class="list-inline list-social">
+            <h2> <i class="fa fa-heart"></i> SookmyungGO<i class="fa fa-heart"></i></h2>
+            <!--<ul class="list-inline list-social">
                 <li class="social-twitter">
                     <a href="#"><i class="fa fa-twitter"></i></a>
                 </li>
@@ -219,7 +223,7 @@
                 <li class="social-google-plus">
                     <a href="#"><i class="fa fa-google-plus"></i></a>
                 </li>
-            </ul>
+            </ul>-->
         </div>
     </section>
 
@@ -253,18 +257,4 @@
     <script src="{% static 'js/new-age.min.js' %}"></script>
 
 </body>
-    <body>
-        <div class="page-header">
-            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
-    </body>
 </html>

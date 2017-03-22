@@ -4,6 +4,7 @@ from .models import Post
 from .forms import PostForm
 from django.shortcuts import redirect
 
+
 #fileupload
 import json
 
@@ -16,7 +17,9 @@ from .serialize import serialize
 # Create your views here.
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('created_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    pictures = Picture.objects.all()
+    params = {'pictures': pictures, 'posts': posts}
+    return render(request, 'blog/post_list.html', params)
 
 def post_detail(request, pk):
         post = get_object_or_404(Post, pk=pk)
@@ -49,6 +52,27 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
+# Point
+from slim import testImage
+
+def classify(request):
+    if request.method == "GET":
+        testImage.Classifier()
+    return render(request, 'blog/picture_angular_form.html')
+
+import os
+
+# def view_photos(request):
+#     images
+#     return render(request, 'blog/base.html', {'images': images})
+    # if request.method == "GET":
+    #     images = get_object_or_404(Picture, pk=pk)
+    #     # root = os.path.join(dataset_dir, 'pictures')
+    #     # for filename in os.listdir(root):
+    #     #     path = os.path.join(root, filename)
+    #     #     #images.append(path)
+    #     #     images.path = path
+    # return render(request, 'blog/base.html', {'images': images})
 
 
 #fileupload
